@@ -12,6 +12,7 @@
 	<style>
 	
 	#main_destination {
+	position: relative;
 	border-style: solid;
 	border-color: gray;
 	border-radius: 5px / 5px;
@@ -30,13 +31,17 @@
         text-overflow: ellipsis;
         width: 500px;
       }
+      #wrapper2{
+	position: absolute;
+	font-size: 2rem;
+}
 
  </style>
  
 
 </head>
   
-<body>
+<body bgcolor="#FFFAF0">
 <div id="map"></div>
 				  
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=261f29d062ca0fc97944b51f744ed653&libraries=services"></script>
@@ -155,11 +160,14 @@ function enterkey() {
 </script>
 
 <form id = "frm" name = "frm" action="ClassSearch.jsp" method="post">
-					<div> 원하는 장소를 입력해주세요 </div>
+					<div id = "wrapper2"> Please enter your current location </div>
+					<br>
+					<br>
+					<br>
 			<div id = "main_destination">		
 				<div id="pac-container"> 위치 <br>
 				<input hidden="hidden" />
-      				<input type="text" id="keyword" name="destination_search" onkeyup="enterkey();" value ="" placeholder="어디에 계신가요? 관심있는 지역을 입력해주세요" >
+      				<input type="text" id="keyword" name="destination_search" onkeyup="enterkey();" value ="" placeholder="Where you at now?" >
       				<input type="hidden" id="center_lat" name="center_lat" value = ""> 
 				<input type="hidden" id="center_lng" name="center_lng" value = "">
     				</div>       	    					
@@ -169,7 +177,13 @@ function enterkey() {
 			</div>
 			</br>
 			</br>
+			<div> Select services you need</div>
 			<input type="checkbox" name = "beverage" value=true> Beverage
+			<input type="checkbox" name = "outlet" value=true> Outlet(콘센트)
+    		<input type="checkbox" name = "network" value=true> Network
+    		<input type="checkbox" name = "silent" value=true> Silent
+    		<input type="checkbox" name = "conversation" value=true> Conversation
+    		<input type="checkbox" name = "partition" value=true> Partition
 </form>
 </body>
 </html>

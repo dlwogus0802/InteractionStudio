@@ -23,7 +23,11 @@ padding: 0px;
 	width: 1200px;
 	margin: 0 auto;	
 }
-
+#wrapper2{
+	position: absolute;
+	left: 400px;
+	font-size: 2rem;
+}
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
 .map_wrap {position:relative;width:100%;height:480px;}
@@ -66,7 +70,10 @@ padding: 0px;
 </style>
 	
 </head>
-<body>
+<body bgcolor="#FFFAF0">
+<br>
+<div id="wrapper2">Register your study place!</div>
+<br><br><br>
 <form id="frm" name="frm" action="write.jsp" method="post">
 <div id="wrapper">
 
@@ -300,7 +307,14 @@ function removeAllChildNods(el) {
     <input type="text" id="paddress" name="paddress" value="">  
     <input type="text" id="latclick" name="latclick" value=""> 
     <input type="text" id="lngclick" name="lngclick" value="">
+    </br>
     <input type="checkbox" name = "beverage" value=true> Beverage
+    <input type="checkbox" name = "outlet" value=true> Outlet(콘센트)
+    <input type="checkbox" name = "network" value=true> Network
+    <input type="checkbox" name = "silent" value=true> Silent
+    <input type="checkbox" name = "conversation" value=true> Conversation
+    <input type="checkbox" name = "partition" value=true> Partition
+    </br>
     <input type="submit" value = "Register">
     </div>
     </div>
