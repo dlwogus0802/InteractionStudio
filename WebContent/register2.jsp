@@ -4,7 +4,9 @@
 <html>
   <head>
     <title>Place Autocomplete</title>
+    <meta name = "viewport" content="width-device-width", initial-sclae = "1">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <meta charset="utf-8">
     <style>
       /* Always set the map height explicitly to define the size of the div
@@ -195,6 +197,7 @@
     
   </head>
   <body bgcolor="#FFFAF0">
+  	
     <div class="pac-card" id="pac-card">
       <div>
         <div id="title">
@@ -245,7 +248,8 @@ Latitude<input type="text" id="latclick" name="latclick" value="37.5559459999999
 	<br>
 	</br>
 	Food/Beverage availability
-    <input type="radio" name = "beverage" value=0 checked = "checked"> No 
+    <input type="radio" class = "btn-check" name = "beverage" value=0 checked = "checked"> 
+    <label class = "btn btn-outlline-success" for="beverage">Nope</label> 
     <input type="radio" name = "beverage" value=1> Yes
     <br>
     <br>
