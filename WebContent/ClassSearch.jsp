@@ -24,30 +24,8 @@ import = "org.jdom2.output.*"
 		String ds = "";
 		double clat = Double.parseDouble(request.getParameter("center_lat"));
 		double clng = Double.parseDouble(request.getParameter("center_lng"));
-		
 		String bev = request.getParameter("beverage");
-		if(bev == null) bev = "0";
-		else bev = "1";
-		
-		String outlet1 = request.getParameter("outlet");
-    	if(outlet1 == null) outlet1 = "0";
-    	else outlet1 = "1";
-    	
-    	String network1 = request.getParameter("network");
-    	if(network1 == null) network1 = "0";
-    	else network1 = "1";
-    	
-    	String silent1 = request.getParameter("silent");
-    	if(silent1 == null) silent1 = "0";
-    	else silent1 = "1";
-    	
-    	String conversation1 = request.getParameter("conversation");
-    	if(conversation1 == null) conversation1 = "0";
-    	else conversation1 = "1";
-    	
-    	String partition1 = request.getParameter("partition");
-    	if(partition1 == null) partition1 = "0";
-    	else partition1 = "1";
+		if(bev == null) bev = "false";
 
 		
 		 //콘솔 출력 테스트
@@ -62,57 +40,9 @@ import = "org.jdom2.output.*"
 		String url = "jdbc:mysql://192.168.219.102:3306/db?serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8";
 		String account = "test";
 		String pass = "supermagic1";
-		String qu = "select * from test";
-		boolean start = false;
-		if(bev == "1" || outlet1 == "1"||network1 == "1"||silent1 == "1"||conversation1=="1"||partition1 == "1"){
-			qu += " where ";
-			if(bev == "1") {
-				start = true;
-				qu += "bev = " + bev;
-			}
-			if(outlet1 == "1"){
-				if(start == false){
-					start = true;
-					qu += " outlet = " + outlet1;
-				} else{
-					qu += " and outlet = " + outlet1;
-				}
-			}
-			if(network1 == "1"){
-				if(start == false){
-					start = true;
-					qu += " network = " + network1;
-				} else{
-					qu += " and network = " + network1;
-				}
-			}
-			if(silent1 == "1"){
-				if(start == false){
-					start = true;
-					qu += " silent = " + silent1;
-				} else{
-					qu += " and silent = " + silent1;
-				}
-			}
-			if(conversation1 == "1"){
-				if(start == false){
-					start = true;
-					qu += " conversation = " + conversation1;
-				} else{
-					qu += " and conversation = " + conversation1;
-				}
-			}
-			if(partition1 == "1"){
-				if(start == false){
-					start = true;
-					qu += " partition = " + partition1;
-				} else{
-					qu += " and partition = " + partition1;
-				}
-			}
-		}
-		System.out.print("test : ");
-		System.out.println(qu);
+		String qu = "select * from test where bev = ";
+		qu += bev;
+				
 			
 		// 이 때 *은 모든 필드(컬럼)을 의미하며 콤마로 별도의 필드(컬럼)을 지정해 줄 수 있다.
 		
@@ -182,11 +112,11 @@ padding: 0px;
 </style>
 		      
 </head>
-<body bgcolor="#FFFAF0">
+<body>
 <div>
 <div id="wrapper">
 
-	<div id="classlist" style = "font-size:15px"> Study places near you!<br><br>  <br><br>
+	<div id="classlist"> <br><br> 조건에 맞는 장소 목록입니다 <br><br>
 
     <%
     //등록된 원데이클래스 불러오기
@@ -230,11 +160,11 @@ padding: 0px;
         	   out.println("</tr>");
   
            	   out.println("<tr>");	
-         	   //out.println("<td>" + rs.getString("lat") + "</td>");
+         	   out.println("<td>" + rs.getString("lat") + "</td>");
          	   out.println("</tr>");
                
            	   out.println("<tr>");	
-         	   //out.println("<td>" + rs.getString("lng") + "</td>");
+         	   out.println("<td>" + rs.getString("lng") + "</td>");
          	   out.println("</tr>");
          	   out.println("</br>");
         	   out.println("</table>");  
@@ -269,7 +199,7 @@ padding: 0px;
 	// 인포윈도우를 생성합니다
 	var infowindow = new kakao.maps.InfoWindow();
     // Change this depending on the name of your PHP or XML file
-    downloadUrl('./xml.jsp?dclat=<%=clat%>&dclng=<%=clng%>&dbev=<%=bev%>&doutlet1=<%=outlet1%>&dsilent1=<%=silent1%>&dnetwork1=<%=network1%>&dconversation1=<%=conversation1%>&dpartition1=<%=partition1%>', function(data) {
+    downloadUrl('./xml.jsp?dclat=<%=clat%>&dclng=<%=clng%>&dbev=<%=bev%>', function(data) {
       var xml = data.responseXML;
       var markers = xml.documentElement.getElementsByTagName('marker');
       Array.prototype.forEach.call(markers, function(markerElem) {

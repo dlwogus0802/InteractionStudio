@@ -21,10 +21,10 @@ import = "java.sql.Statement"
 </style>
 </head>
 
-<body bgcolor="#FFFAF0">
+<body>
 <div id="wrapper">
 
-Study place is registered!
+클래스 등록이 완료되었습니다!
 
 <!-- 클래스 내용 DB Write -->
 
@@ -35,18 +35,10 @@ Study place is registered!
 		String lng1 = request.getParameter("lngclick");
 	    	String paddress1 = request.getParameter("paddress");
 	    	String pname1 = request.getParameter("pname");
-	    	
 	    	String bev1 = request.getParameter("beverage");
-	    	
-	    	String outlet1 = request.getParameter("outlet");
-	    	String network1 = request.getParameter("network");
-	    	String silent1 = request.getParameter("silent");
-	    	String partition1 = request.getParameter("partition");
-	    	String spacious1 = request.getParameter("spacious");
-	    	String lighting1 = request.getParameter("lighting");
-	    	String scenery1 = request.getParameter("scenery");
-	    	String startTime1 = request.getParameter("startTime");
-	    	String endTime1 = request.getParameter("endTime");
+	    	if(bev1 == null) bev1 = "false";
+
+
 		Connection con = null;
 		Statement stmt = null;
 		
@@ -71,21 +63,12 @@ Study place is registered!
 		// input data
 		
 				String sql = "insert into test (lat, lng, pad, pn) values (lat1, lng1, paddress1, pname1)";
-				String sql2 = "insert into test (lat, lng, pad, pn, bev, outlet, network, silent, part, spacious, lighting, scenery, startTime, endTime) value (";
+				String sql2 = "insert into test (lat, lng, pad, pn, bev) value (";
 				sql2 = sql2 + "\"" + lat1 + "\"" + ", ";
 				sql2 = sql2 + "\"" + lng1 + "\"" + ", ";
 				sql2 = sql2 + "\"" + paddress1 + "\"" + ", ";
 				sql2 = sql2 + "\"" + pname1 + "\"" + ", ";
-				sql2 = sql2 + "\"" + bev1 + "\"" + ", ";
-				sql2 = sql2 + "\"" + outlet1 + "\"" + ", ";
-				sql2 = sql2 + "\"" + network1 + "\"" + ", ";
-				sql2 = sql2 + "\"" + silent1 + "\"" + ", ";
-				sql2 = sql2 + "\"" + partition1 + "\"" + ", ";
-				sql2 = sql2 + "\"" + spacious1 + "\"" + ", ";
-				sql2 = sql2 + "\"" + lighting1 + "\"" + ", ";
-				sql2 = sql2 + "\"" + scenery1 + "\"" + ", ";
-				sql2 = sql2 + "\"" + startTime1 + "\"" + ", ";
-				sql2 = sql2 + "\"" + endTime1 + "\"" + ")";
+				sql2 = sql2 + bev1 + ")";
 				stmt = con.createStatement();
 				System.out.println("SQLServerStatement 개체 생성 !");
 									

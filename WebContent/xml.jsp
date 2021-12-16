@@ -21,13 +21,6 @@ String dsxml = request.getParameter("dsxml");
 double ddclat = Double.parseDouble(request.getParameter("dclat"));
 double ddclng = Double.parseDouble(request.getParameter("dclng"));
 String ddbev = request.getParameter("dbev");
-String ddoutlet1 = request.getParameter("doutlet1");
-String ddsilent1 = request.getParameter("dsilent1");
-String ddnetwork1 = request.getParameter("dnetwork1");
-String ddpartition1 = request.getParameter("dpartition1");
-String ddspacious1 = request.getParameter("dspacious1");
-String ddlighting1 = request.getParameter("dlighting1");
-String ddscenery1 = request.getParameter("dscenery1");
 
 Connection con = null;
 Statement stmt = null;
@@ -40,84 +33,10 @@ System.out.println("드라이버 로드 성공 !");
 String url = "jdbc:mysql://192.168.219.102:3306/db?serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8";
 String account = "test";
 String pass = "supermagic1";
-String qu = "select * from test";
-boolean start = false;
-//String qu = "select * from test where bev = ";
-if(!ddbev.equals("-1")||!ddoutlet1.equals("-1")||!ddnetwork1.equals("-1")||!ddsilent1.equals("-1")||!ddpartition1.equals("-1")||!ddspacious1.equals("-1")||!ddlighting1.equals("-1")||!ddscenery1.equals("-1")){
-	qu += " where ";
-	if(!ddbev.equals("-1")) {
-		start = true;
-		qu += "bev = " + ddbev;
-	}
-	if(!ddoutlet1.equals("-1")){
-		if(start == false){
-			start = true;
-			qu += " outlet = " + ddoutlet1;
-		} else{
-			qu += " and outlet = " + ddoutlet1;
-		}
-	}
-	if(!ddnetwork1.equals("-1")){
-		if(start == false){
-			start = true;
-			qu += " network = " + ddnetwork1;
-		} else{
-			qu += " and network = " + ddnetwork1;
-		}
-	}
-	if(!ddsilent1.equals("-1")){
-		if(start == false){
-			start = true;
-			qu += " silent = " + ddsilent1;
-		} else{
-			qu += " and silent = " + ddsilent1;
-		}
-	}
-	if(!ddpartition1.equals("-1")){
-		if(start == false){
-			start = true;
-			qu += " part = " + ddpartition1;
-		} else{
-			qu += " and part = " + ddpartition1;
-		}
-	}
-	if(!ddspacious1.equals("-1")){
-		if(start == false){
-			start = true;
-			qu += " spacious = " + ddspacious1;
-		} else{
-			qu += " and spacious = " + ddspacious1;
-		}
-	}
-	if(!ddlighting1.equals("-1")){
-		if(start == false){
-			start = true;
-			qu += " lighting = " + ddlighting1;
-		} else{
-			qu += " and lighting = " + ddlighting1;
-		}
-	}
-	if(!ddscenery1.equals("-1")){
-		if(start == false){
-			start = true;
-			qu += " scenery = " + ddscenery1;
-		} else{
-			qu += " and scenery = " + ddscenery1;
-		}
-	}
-}
-/*
-String qu2 = "select * from test where";
-qu2 += " bev = " + ddbev;
-qu2 += " and outlet = " + ddoutlet1;
-qu2 += " and network = " + ddnetwork1;
-qu2 += " and silent = " + ddsilent1;
-qu2 += " and part = " + ddpartition1;
-qu2 += " and spacious = " + ddspacious1;
-qu2 += " and lighting = " + ddlighting1;
-qu2 += " and scenery = " + ddscenery1;
-*/
-System.out.print("test1 : ");
+//String qu = "select * from test";
+String qu = "select * from test where bev = ";
+qu += ddbev;
+System.out.print("test : ");
 System.out.println(qu);
 
 	
